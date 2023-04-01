@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Sync OAuth</title>
+    <style>
+      body {
+        font-family: sans-serif;
+        text-align: center;
+        margin-top: 50px;
+      }
+      h1 {
+        font-size: 2em;
+        margin-bottom: 20px;
+      }
+      p {
+        font-size: 1.2em;
+        margin-bottom: 30px;
+      }
+      form {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #4285F4;
+        color: #FFF;
+        border-radius: 5px;
+        box-shadow: 0px 2px 2px #888;
+        text-decoration: none;
+        transition: background-color 0.3s ease;
+      }
+      form:hover {
+        background-color: #3367D6;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Do you want to enable Cloudstream3 sync to Google Drive?</h1>
+    <p>You are about to grant access to your Google Drive files to our app. Cloudstream3 would be able to only upload/delete/modify files it creates. This page was create by Cloudstream3. If you agree, please click the button below:</p>
+    <form id="oauth-form">
+      <input type="hidden" name="code" id="code" value="">
+      <input type="hidden" name="scope" id="scope" value="">
+      <button type="submit">Grant Access</button>
+    </form>
+    <script>
+      // Get the code and scope parameters from the URL
+      const params = new URLSearchParams(window.location.search);
+      const code = params.get('code');
+      const scope = params.get('scope');
+      
+      // Set the hidden form fields with the values from the URL parameters
+      document.getElementById('code').value = code;
+      document.getElementById('scope').value = scope;
+      
+      // Redirect to the Android app when the form is submitted
+      document.getElementById('oauth-form').addEventListener('submit', (event) => {
+        event.preventDefault();
+        window.location.href = 'cloudstream3://oauth?code=' + code + '&scope=' + scope;
+      });
+    </script>
+  </body>
+</html>
