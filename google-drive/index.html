@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Sync OAuth</title>
+    <title>Cloudstream3 Sync - Google Drive</title>
     <style>
       html  {
         margin: 0;
@@ -28,7 +28,7 @@
         font-size: 1.2em;
         margin-bottom: 30px;
       }
-      button {
+      .button {
         padding: 0.5rem;
         border-radius: 0.25rem;
         outline: none;
@@ -38,8 +38,9 @@
         transition: all 0.5s ease;
         cursor: pointer;
         font-size: 1.5rem;
+        text-decoration: none;
       }
-      button:hover {
+      .button:hover {
         color: black;
         background: white;
       }
@@ -48,24 +49,16 @@
   <body>
     <h1>Do you want to enable Cloudstream3 sync to Google Drive?</h1>
     <div>You are about to grant access to your Google Drive files to our app. Cloudstream3 would be able to only upload/delete/modify files it creates. This page was created by Cloudstream3. If you agree, please click the button below:</div></p>
-    <form id="oauth-form">
-      <button type="submit">Grant Access</button>
-    </form>
+    <a href="#" class="button" title="Grant Access" >Grant Access</a>
     <script>
       // Get the code and scope parameters from the URL
       const params = new URLSearchParams(window.location.search);
       const code = params.get('code');
       const scope = params.get('scope');
-
-      // Set the hidden form fields with the values from the URL parameters
-      document.getElementById('code').value = code;
-      document.getElementById('scope').value = scope;
       
-      // Redirect to the Android app when the form is submitted
-      document.getElementById('oauth-form').addEventListener('submit', (event) => {
-        event.preventDefault();
-        window.location.href = `cloudstream3://oauth/google-drive?code=${code}&scope=${scope}`;
-      });
+      // Redirect to the Android app when the anchor tag is clicked
+      const a = document.querySelector('a.button')
+      a.href = "cloudstream3://oauth/google-drive?code=${code}&scope=${scope}"
     </script>
   </body>
 </html>
