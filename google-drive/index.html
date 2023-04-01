@@ -51,14 +51,9 @@
     <div>You are about to grant access to your Google Drive files to our app. Cloudstream3 would be able to only upload/delete/modify files it creates. This page was created by Cloudstream3. If you agree, please click the button below:</div></p>
     <a href="#" class="button" title="Grant Access" >Grant Access</a>
     <script>
-      // Get the code and scope parameters from the URL
-      const params = new URLSearchParams(window.location.search);
-      const code = params.get('code');
-      const scope = params.get('scope');
-      
       // Redirect to the Android app when the anchor tag is clicked
       const a = document.querySelector('a.button')
-      a.href = `cloudstream3://oauth/google-drive?code=${code}&scope=${scope}`
+      a.href = `cloudstreamapp://oauth/google-drive${window.location.search}`
     </script>
   </body>
 </html>
