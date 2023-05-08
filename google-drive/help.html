@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Cloudstream3 Sync - Google Drive</title>
+	<style>
+        html {
+            margin: 0;
+            padding: 0;
+            background: black;
+            color: white;
+        }
+
+        body {
+            font-family: sans-serif;
+            /*text-align: center;*/
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+        }
+
+        .button {
+            padding: 0.5rem;
+            border-radius: 0.25rem;
+            outline: none;
+            color: white;
+            border: 2px solid white;
+            background: transparent;
+            transition: all 0.5s ease;
+            cursor: pointer;
+            font-size: 1.5rem;
+            text-decoration: none;
+        }
+
+        .button:hover {
+            color: black;
+            background: white;
+        }
+	</style>
+</head>
+<body>
+<h1>Cloudstream3 Google Drive API Guide</h1>
+
+<h2>Step 1: Create a Google Cloud Project</h2>
+<p>First, you'll need to create a Google Cloud project to use the Google Drive API. Here's how:</p>
+<ol>
+	<li>Go to the <a href="https://console.cloud.google.com/">Google Cloud Console</a>.</li>
+	<li>Click the "Create Project" button.</li>
+	<li>Enter a name for your project, then click "Create".</li>
+</ol>
+<h2>Step 2: Enable the Google Drive API</h2>
+<p>Now that you have a project, you'll need to enable the Google Drive API. Here's how:</p>
+<ol>
+	<li>In the Google Cloud Console, click the "APIs & Services" menu on the left side of the screen.</li>
+	<li>Click the "Dashboard" tab, then click the "+ ENABLE APIS AND SERVICES" button.</li>
+	<li>Search for "Google Drive API", then click the "Enable" button.</li>
+</ol>
+<h2>Step 3: Create OAuth2 Credentials</h2>
+<p>To use the Google Drive API, you'll need to create OAuth2 credentials. Here's how:</p>
+<ol>
+	<li>In the Google Cloud Console, click the "APIs & Services" menu on the left side of the screen.</li>
+	<li>Click the "Credentials" tab, then click the "+ CREATE CREDENTIALS" button and select "OAuth client ID".</li>
+	<li>Choose "Web application" as the application type.</li>
+	<li>Enter a name for your OAuth client ID, then enter the authorized JavaScript origins and authorized redirect URIs. For Cloudstream3, you can use
+		"https://chiff.github.io/cloudstream-sync/google-drive" (or use custom redirect url) as the redirect URI.
+	</li>
+	<li>Click "Create".</li>
+	<li>Copy the "Client ID" and "Client secret" values.</li>
+</ol>
+<h2>Step 4: Add Google Drive Account in Cloudstream3 Settings</h2>
+<p>Now that you have OAuth2 credentials, you can add your Google Drive account in the Cloudstream3 settings. Here's how:</p>
+<ol>
+	<li>In the Cloudstream3 app, go to the settings menu.</li>
+	<li>Open "Accounts" section.</li>
+	<li>Click "Google Drive account" under the "Remote Sync" section.</li>
+	<li>Enter your "Client ID" and "Client secret" values.</li>
+	<li>Optional: give a name to your sync file.</li>
+	<li>Optional: use custom redirect url if needed.</li>
+	<li>Click "Log in"</li>
+	<li>You'll be redirected to Google to grant access to the Cloudstream3 app. Confirm that you want to grant access.</li>
+	<li>If everything was successful, you'll be logged in Cloudstream3 and toastbar with text "Google Drive authenticated" will appear.</li>
+</ol>
+<h2>Step 5: Sync Data with Google Drive</h2>
+<p>With your Google Drive account added to Cloudstream3, the app will now automatically sync your data. Here's how it works:</p>
+<ul>
+	<li>Any changes you make to your data in the Cloudstream3 app will be observed by a new BackupAPI interface.</li>
+	<li>The BackupAPI will upload any new data to your Google Drive account.</li>
+	<li>The BackupAPI will also periodically download data from your Google Drive account and save it on your device.</li>
+	<li>Watching on two devices simultaneously is not recommended because some data may be overridden - every user should have own account to prevent that</li>
+</ul>
+<p>And that's it! With the Google Drive API enabled and your Google Drive account added to Cloudstream3, your data will be synced across multiple devices. If you have any questions or issues, feel free to contact our support team.</p>
+</body>
+</html>
